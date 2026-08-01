@@ -1,0 +1,102 @@
+name: Collect monitor observations
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 16 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monitor-collection
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      commit_observations: ${{ steps.flags.outputs.commit_observations }}
+      create_price_alerts: ${{ steps.flags.outputs.create_price_alerts }}
+    steps:
+      - name: Check out source without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install Python 3.13
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6 # v6.6.1
+      - name: Install locked dependencies
+        run: uv sync --locked --all-extras
+      - name: Fail closed and expose automation flags
+        id: flags
+        run: uv run python -m monitor_watch.cli automation-output
+      - name: Refuse stale retailer policy reviews
+        run: uv run python -m monitor_watch.cli check-retailer-reviews
+      - name: Collect enabled reviewed pages into workspace only
+        run: |
+          set +e
+          uv run python -m monitor_watch.cli collect-all --write > collection-output.log 2>&1
+          status=$?
+          set -e
+          cat collection-output.log
+          exit "$status"
+      - name: Validate normalized data and rebuild dashboard
+        run: |
+          uv run python -m monitor_watch.cli validate
+          uv run python -m monitor_watch.cli dashboard
+      - name: Prepare deterministic review bundle
+        run: git diff --binary -- data docs/data > reviewed-data.patch
+      - name: Upload manual-review data bundle
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: monitor-observations-${{ github.run_id }}
+          path: |
+            collection-output.log
+            reviewed-data.patch
+            data/current.json
+            data/history/
+            docs/data/dashboard.json
+          retention-days: 14
+          if-no-files-found: error
+      - name: Upload bounded diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: collection-failure-${{ github.run_id }}
+          path: collection-output.log
+          retention-days: 7
+          if-no-files-found: ignore
+
+  commit-reviewed-data:
+    if: needs.collect.outputs.commit_observations == 'true'
+    needs: collect
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source with credentials required for the configured push
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Download reviewed data bundle
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          name: monitor-observations-${{ github.run_id }}
+      - name: Apply and commit only changed normalized data
+        shell: bash
+        run: |
+          git apply reviewed-data.patch
+          if git diff --quiet -- data docs/data; then exit 0; fi
+          git config user.name "monitor-watch-au automation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs/data
+          git commit -m "data: update monitored offers [skip ci]"
+          git push

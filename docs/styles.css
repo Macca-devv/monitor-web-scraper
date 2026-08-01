@@ -1,0 +1,8 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; --accent:#50c9a8; }
+body { margin:0; background:#10151b; color:#edf4f2; }
+header, main, footer { max-width:76rem; margin:auto; padding:1.5rem; }
+header { border-bottom:1px solid #34434c; }
+#models { display:grid; grid-template-columns:repeat(auto-fit,minmax(19rem,1fr)); gap:1rem; margin:1.5rem 0; }
+.card { background:#182129; border:1px solid #34434c; border-radius:.75rem; padding:1rem; }
+.warning { color:#ffcc70; } a { color:var(--accent); } footer { color:#a9b7b4; }
+@media (prefers-color-scheme:light) { body { background:#f6f8f7; color:#17201f; } .card { background:white; border-color:#ccd7d4; } }

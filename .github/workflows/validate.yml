@@ -1,0 +1,55 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install Python 3.13
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6 # v6.6.1
+        with:
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --locked --all-extras
+      - name: Ruff formatting
+        run: uv run ruff format --check .
+      - name: Ruff lint
+        run: uv run ruff check .
+      - name: Strict type checking
+        run: uv run mypy --strict src
+      - name: Offline unit tests
+        env:
+          MONITOR_WATCH_TEST_NETWORK: blocked
+        run: uv run pytest -q
+      - name: Validate YAML and application configuration
+        run: |
+          uv run python -c "from pathlib import Path; import yaml; paths=list(Path('config').glob('*.yaml'))+list(Path('.github/workflows').glob('*.yml')); [yaml.safe_load(p.read_text(encoding='utf-8')) for p in paths]; print(f'validated {len(paths)} YAML files')"
+          uv run python -m monitor_watch.cli validate
+      - name: Build deterministic dashboard and verify committed output
+        run: |
+          uv run python -m monitor_watch.cli dashboard
+          git diff --exit-code -- docs/data/dashboard.json
+      - name: Reject unsafe generated dashboard constructs
+        run: |
+          if grep -R -n -E 'innerHTML|document\.write|eval\(' docs; then exit 1; fi

@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": null,
+  "models": [
+    {
+      "model": "LG UltraGear 32GR93U-B",
+      "threshold": {
+        "buy_price_aud": 600.0,
+        "excellent_price_aud": 550.0,
+        "approved": false,
+        "approved_at": null,
+        "approved_by": null,
+        "notes": "Provisional user-supplied value; requires explicit approval before alerting."
+      },
+      "lowest_qualified": null,
+      "lowest_rejected": null,
+      "specifications": {
+        "canonical_model": "LG UltraGear 32GR93U-B",
+        "facts": {
+          "diagonal_inches": 31.5,
+          "resolution": "3840x2160",
+          "flat": true,
+          "panel_family": "IPS",
+          "refresh_rate_hz": 144,
+          "video_inputs": 3,
+          "warranty_years": 3
+        },
+        "evidence": [
+          {
+            "source_url": "https://www.ple.com.au/products/661692/lg-ultragear-32gr93u-b-32-4k-144hz-ips-monitor",
+            "captured_at_utc": "2026-08-02T00:00:00Z",
+            "supports": [
+              "diagonal_inches",
+              "resolution",
+              "flat",
+              "panel_family",
+              "refresh_rate_hz",
+              "video_inputs",
+              "warranty_years"
+            ],
+            "source_type": "retailer_product_page"
+          }
+        ]
+      },
+      "score": {
+        "total": "100.0",
+        "confidence": "0.85",
+        "components": {
+          "productivity": "100",
+          "image_quality": "100",
+          "connectivity": "100",
+          "gaming": "100",
+          "warranty": "100",
+          "value": null
+        }
+      }
+    },
+    {
+      "model": "LG UltraGear 32G810SA-W",
+      "threshold": {
+        "buy_price_aud": 900.0,
+        "excellent_price_aud": 800.0,
+        "approved": false,
+        "approved_at": null,
+        "approved_by": null,
+        "notes": "Provisional user-supplied value; requires explicit approval before alerting."
+      },
+      "lowest_qualified": null,
+      "lowest_rejected": null,
+      "specifications": {
+        "canonical_model": "LG UltraGear 32G810SA-W",
+        "facts": {},
+        "evidence": []
+      },
+      "score": {
+        "total": null,
+        "confidence": "0",
+        "components": {
+          "productivity": null,
+          "image_quality": null,
+          "connectivity": null,
+          "gaming": null,
+          "warranty": null,
+          "value": null
+        }
+      }
+    },
+    {
+      "model": "ASUS ROG Strix XG32UCG",
+      "threshold": {
+        "buy_price_aud": 750.0,
+        "excellent_price_aud": 675.0,
+        "approved": false,
+        "approved_at": null,
+        "approved_by": null,
+        "notes": "Provisional user-supplied value; requires explicit approval before alerting."
+      },
+      "lowest_qualified": null,
+      "lowest_rejected": null,
+      "specifications": {
+        "canonical_model": "ASUS ROG Strix XG32UCG",
+        "facts": {},
+        "evidence": []
+      },
+      "score": {
+        "total": null,
+        "confidence": "0",
+        "components": {
+          "productivity": null,
+          "image_quality": null,
+          "connectivity": null,
+          "gaming": null,
+          "warranty": null,
+          "value": null
+        }
+      }
+    },
+    {
+      "model": "Dell G3223Q",
+      "threshold": {
+        "buy_price_aud": 700.0,
+        "excellent_price_aud": 625.0,
+        "approved": false,
+        "approved_at": null,
+        "approved_by": null,
+        "notes": "Provisional user-supplied value; requires explicit approval before alerting."
+      },
+      "lowest_qualified": null,
+      "lowest_rejected": null,
+      "specifications": {
+        "canonical_model": "Dell G3223Q",
+        "facts": {
+          "diagonal_inches": 32,
+          "resolution": "3840x2160",
+          "flat": true,
+          "panel_family": "IPS",
+          "refresh_rate_hz": 144,
+          "warranty_years": 3
+        },
+        "evidence": [
+          {
+            "source_url": "https://www.dell.com/en-au/shop/dell-32-4k-uhd-gaming-monitor-g3223q/apd/210-begu",
+            "captured_at_utc": "2026-08-02T00:00:00Z",
+            "supports": [
+              "diagonal_inches",
+              "resolution",
+              "flat",
+              "panel_family",
+              "refresh_rate_hz",
+              "warranty_years"
+            ],
+            "source_type": "manufacturer_product_page"
+          }
+        ]
+      },
+      "score": {
+        "total": "100.0",
+        "confidence": "0.70",
+        "components": {
+          "productivity": "100",
+          "image_quality": "100",
+          "connectivity": null,
+          "gaming": "100",
+          "warranty": "100",
+          "value": null
+        }
+      }
+    },
+    {
+      "model": "Dell UltraSharp U3225QE",
+      "threshold": {
+        "buy_price_aud": 1000.0,
+        "excellent_price_aud": 900.0,
+        "approved": false,
+        "approved_at": null,
+        "approved_by": null,
+        "notes": "Provisional user-supplied value; requires explicit approval before alerting."
+      },
+      "lowest_qualified": null,
+      "lowest_rejected": null,
+      "specifications": {
+        "canonical_model": "Dell UltraSharp U3225QE",
+        "facts": {
+          "diagonal_inches": 31.5,
+          "resolution": "3840x2160",
+          "flat": true,
+          "panel_family": "IPS Black",
+          "refresh_rate_hz": 120,
+          "usb_c": true,
+          "kvm": true,
+          "warranty_years": 3
+        },
+        "evidence": [
+          {
+            "source_url": "https://www.dell.com/en-au/shop/dell-ultrasharp-32-4k-thunderbolt-hub-monitor-u3225qe/apd/210-bqmn/monitors-monitor-accessories",
+            "captured_at_utc": "2026-08-02T00:00:00Z",
+            "supports": [
+              "diagonal_inches",
+              "resolution",
+              "flat",
+              "panel_family",
+              "refresh_rate_hz",
+              "usb_c",
+              "kvm",
+              "warranty_years"
+            ],
+            "source_type": "manufacturer_product_page"
+          }
+        ]
+      },
+      "score": {
+        "total": "97.6",
+        "confidence": "0.85",
+        "components": {
+          "productivity": "100",
+          "image_quality": "100",
+          "connectivity": "100",
+          "gaming": "80",
+          "warranty": "100",
+          "value": null
+        }
+      }
+    }
+  ],
+  "collector_health": [],
+  "last_successful_collection_utc": null
+}

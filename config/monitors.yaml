@@ -1,0 +1,62 @@
+schema_version: 1
+monitors:
+  - canonical_model: LG UltraGear 32GR93U-B
+    manufacturer: LG
+    model_number: 32GR93U-B
+    aliases: [32GR93U, 32GR93U-B.AAU]
+    enabled: true
+    placeholder: false
+    expected_specifications:
+      diagonal_inches: null
+      resolution: null
+      flat: null
+      panel_family: null
+      refresh_rate_hz: null
+  - canonical_model: LG UltraGear 32G810SA-W
+    manufacturer: LG
+    model_number: 32G810SA-W
+    aliases: [32G810SA]
+    enabled: true
+    placeholder: false
+    expected_specifications:
+      diagonal_inches: null
+      resolution: null
+      flat: null
+      panel_family: null
+      refresh_rate_hz: null
+  - canonical_model: ASUS ROG Strix XG32UCG
+    manufacturer: ASUS
+    model_number: XG32UCG
+    aliases: []
+    enabled: true
+    placeholder: false
+    expected_specifications:
+      diagonal_inches: null
+      resolution: null
+      flat: null
+      panel_family: null
+      refresh_rate_hz: null
+  - canonical_model: Dell G3223Q
+    manufacturer: Dell
+    model_number: G3223Q
+    aliases: []
+    enabled: true
+    placeholder: false
+    expected_specifications:
+      diagonal_inches: null
+      resolution: null
+      flat: null
+      panel_family: null
+      refresh_rate_hz: null
+  - canonical_model: Dell UltraSharp U3225QE
+    manufacturer: Dell
+    model_number: U3225QE
+    aliases: []
+    enabled: true
+    placeholder: false
+    expected_specifications:
+      diagonal_inches: null
+      resolution: null
+      flat: null
+      panel_family: null
+      refresh_rate_hz: null

@@ -1,0 +1,47 @@
+schema_version: 1
+currency: AUD
+thresholds:
+  LG UltraGear 32GR93U-B:
+    buy_price_aud: 600
+    excellent_price_aud: 550
+    approved: false
+    approved_at: null
+    approved_by: null
+    notes: Provisional user-supplied value; requires explicit approval before alerting.
+  LG UltraGear 32G810SA-W:
+    buy_price_aud: 900
+    excellent_price_aud: 800
+    approved: false
+    approved_at: null
+    approved_by: null
+    notes: Provisional user-supplied value; requires explicit approval before alerting.
+  Dell G3223Q:
+    buy_price_aud: 700
+    excellent_price_aud: 625
+    approved: false
+    approved_at: null
+    approved_by: null
+    notes: Provisional user-supplied value; requires explicit approval before alerting.
+  Dell UltraSharp U3225QE:
+    buy_price_aud: 1000
+    excellent_price_aud: 900
+    approved: false
+    approved_at: null
+    approved_by: null
+    notes: Provisional user-supplied value; requires explicit approval before alerting.
+  ASUS ROG Strix XG32UCG:
+    buy_price_aud: 750
+    excellent_price_aud: 675
+    approved: false
+    approved_at: null
+    approved_by: null
+    notes: Provisional user-supplied value; requires explicit approval before alerting.
+qualification:
+  allowed_conditions: [new]
+  allowed_stock_statuses: [in_stock, available_to_order]
+  require_australian_stock: true
+  require_clear_australian_warranty: true
+  reject_marketplace: true
+  reject_grey_import: true
+  minimum_warranty_years: 3
+  require_field_evidence: true

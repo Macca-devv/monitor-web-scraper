@@ -1,0 +1,85 @@
+schema_version: 1
+user_agent: monitor-watch-au/0.2 (low-rate Australian monitor price research)
+request_timeout_seconds: 15
+response_size_limit_bytes: 2000000
+minimum_request_interval_seconds: 5
+maximum_transient_retries: 1
+history_retention_months: 24
+retailers:
+  - id: lg_australia
+    name: LG Australia
+    established_australian_retailer: true
+    approved_direct_manufacturer: true
+    enabled: false
+    strategy: pending_terms_and_robots_review
+    urls: {}
+    review_status: rejected
+    reviewed_at: 2026-08-02
+    review_due: 2026-11-02
+  - id: dell_australia
+    name: Dell Australia
+    established_australian_retailer: true
+    approved_direct_manufacturer: true
+    enabled: false
+    strategy: disabled_acceptable_use_ambiguity
+    urls: {}
+    review_status: rejected
+    reviewed_at: 2026-08-02
+    review_due: 2026-11-02
+  - id: centre_com
+    name: Centre Com
+    established_australian_retailer: true
+    approved_direct_manufacturer: false
+    enabled: false
+    strategy: blocked_by_human_verification
+    urls: {}
+    review_status: rejected
+    reviewed_at: 2026-08-02
+    review_due: 2026-11-02
+  - id: computer_alliance
+    name: Computer Alliance
+    established_australian_retailer: true
+    approved_direct_manufacturer: false
+    enabled: false
+    strategy: disabled_policy_review_incomplete
+    urls: {}
+    review_status: rejected
+    reviewed_at: 2026-08-01
+    review_due: 2026-11-01
+  - id: scorptec
+    name: Scorptec
+    established_australian_retailer: true
+    approved_direct_manufacturer: false
+    enabled: false
+    strategy: disabled_acceptable_use_ambiguity
+    urls: {}
+    review_status: rejected
+    reviewed_at: 2026-08-02
+    review_due: 2026-11-02
+  - id: ple
+    name: PLE Computers
+    established_australian_retailer: true
+    approved_direct_manufacturer: false
+    enabled: true
+    strategy: json_ld_product_page
+    parser_version: ple-jsonld-v1
+    urls:
+      LG UltraGear 32GR93U-B: https://www.ple.com.au/products/661692/lg-ultragear-32gr93u-b-32-4k-144hz-ips-monitor
+    review_status: approved
+    reviewed_at: 2026-08-02
+    review_due: 2026-11-02
+  - id: umart
+    name: Umart
+    established_australian_retailer: true
+    approved_direct_manufacturer: false
+    enabled: true
+    strategy: json_ld_product_page
+    parser_version: umart-jsonld-v1
+    urls:
+      Dell UltraSharp U3225QE: https://www.umart.com.au/product/dell-ultrasharp-32in-4k-ips-120hz-thunderbolt-hub-monitor-u3225qe-84809
+    review_status: approved
+    reviewed_at: 2026-08-01
+    review_due: 2026-11-01
+seller_exclusions:
+  patterns: [refurbished, renewed, used, factory second, grey import]
+approved_marketplace_sellers: []

@@ -1,0 +1,8 @@
+schema_version: 1
+automation:
+  commit_observations: false
+  create_price_alerts: false
+  publish_dashboard: false
+  update_existing_alerts: false
+  retailer_review_grace_days: 0
+  alert_price_band_aud: 25
