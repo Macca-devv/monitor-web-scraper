@@ -12,7 +12,7 @@ license = { text = "MIT" }
 dependencies = [
   "beautifulsoup4==4.15.0",
   "httpx==0.28.1",
-  "pydantic==2.13.4",
+  "pydantic==2.13.5",
   "PyYAML==6.0.3",
 ]
 
